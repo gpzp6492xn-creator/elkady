@@ -3,106 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hoist Dashboard | نظام الإدارة</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>تقييم الطيب</title>
     <style>
-        body { font-family: 'IBM Plex Sans Arabic', sans-serif; background-color: #F8FAFC; }
-        .sidebar-gradient { background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%); }
-        .custom-shadow { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04); }
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #050505 url('https://www.transparenttextures.com/patterns/stardust.png'); /* خلفية نجوم بسيطة */
+            font-family: sans-serif;
+            overflow: hidden;
+        }
+
+        .main-container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* تنسيق الصورة الشخصية مكان اللوجو */
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 50px;
+            border-radius: 50%;
+            border: 3px solid #f1c40f;
+            box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
+            object-fit: cover; /* لضمان عدم تشويه الصورة */
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .buttons-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+            color: white;
+        }
+
+        /* زر إيجابي - أخضر */
+        .positive {
+            background-color: #27ae60;
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+        }
+
+        /* زر سلبي - أحمر */
+        .negative {
+            background-color: #e74c3c;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden text-slate-900">
+<body>
 
-    <aside class="w-72 bg-white border-l border-slate-200 flex flex-col h-full sidebar-gradient z-50">
-        <div class="p-8 flex items-center gap-3">
-            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-                <span class="text-xl font-bold italic">H</span>
-            </div>
-            <span class="text-2xl font-black tracking-tight text-slate-800">HOIST</span>
+    <div class="main-container">
+        <div class="logo-wrap">
+            <img src="https://r.jina.ai/i/3482d8d85f79435cb7468eb9f315a653" alt="كريم" class="logo">
         </div>
 
-        <nav class="flex-1 px-4 mt-6 space-y-1">
-            <p class="text-[11px] font-bold text-slate-400 px-4 mb-3 tracking-widest uppercase">الرئيسية</p>
-            <a href="#" class="flex items-center px-4 py-3 bg-blue-50 text-blue-700 rounded-xl font-semibold transition-all">
-                <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                لوحة التحكم
-            </a>
-            <a href="#" class="flex items-center px-4 py-3 text-slate-500 hover:bg-slate-50 rounded-xl transition-all">
-                <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
-                إدارة الطلبات
-            </a>
-        </nav>
+        <div class="buttons-wrap">
+            <a href="https://search.google.com/local/writereview?placeid=ChIJq-FYuPQ5WBQRaAhFrbMTaLI" class="btn positive">إيجابي 👍</a>
 
-        <div class="p-6 border-t border-slate-100">
-            <div class="flex items-center p-3 bg-slate-50 rounded-2xl border border-slate-100">
-                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 font-bold">ك</div>
-                <div class="mr-3">
-                    <p class="text-sm font-bold">كريم</p>
-                    <p class="text-[10px] text-slate-400">Admin Account</p>
-                </div>
-            </div>
+            <a href="https://wa.me/201016944198?text=عندي%20شكوي%20:%20" class="btn negative">سلبي 👎</a>
         </div>
-    </aside>
-
-    <main class="flex-1 flex flex-col min-w-0">
-        <header class="h-20 bg-white border-b border-slate-200 px-10 flex items-center justify-between sticky top-0 z-40">
-            <div>
-                <h1 class="text-xl font-bold text-slate-800">نظرة عامة على العمليات</h1>
-                <p class="text-xs text-slate-400 mt-0.5">أهلاً كريم، إليك ما يحدث في Hoist اليوم</p>
-            </div>
-            <div class="flex items-center gap-4">
-                <div class="relative">
-                    <input type="text" placeholder="بحث..." class="bg-slate-50 border border-slate-200 rounded-full py-2 px-10 text-sm focus:ring-2 focus:ring-blue-500 outline-none w-64 transition-all">
-                    <svg class="w-4 h-4 text-slate-400 absolute right-4 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-                <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-blue-200 transition-all active:scale-95">
-                    إضافة طلب جديد
-                </button>
-            </div>
-        </header>
-
-        <section class="flex-1 overflow-y-auto p-10 space-y-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 custom-shadow">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="p-2 bg-blue-50 rounded-lg text-blue-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <span class="text-[10px] font-bold bg-emerald-100 text-emerald-600 px-2 py-1 rounded-full">+12%</span>
-                    </div>
-                    <p class="text-slate-400 text-xs font-medium">إجمالي الطلبات</p>
-                    <h3 class="text-2xl font-black mt-1">2,845</h3>
-                </div>
-                </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-10">
-                <div class="lg:col-span-2 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-                    <div class="p-6 border-b border-slate-50 flex justify-between items-center bg-white">
-                        <h2 class="font-bold">آخر النشاطات</h2>
-                        <button class="text-blue-600 text-xs font-bold hover:underline">تحميل التقرير</button>
-                    </div>
-                    <div class="p-0">
-                        <div class="h-64 flex flex-col items-center justify-center text-slate-300">
-                             <svg class="w-16 h-16 mb-2 opacity-20" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path></svg>
-                             <p class="text-sm font-medium">الجدول والبيانات التفصيلية تظهر هنا</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
-                    <h2 class="font-bold mb-6">توزيع المهام</h2>
-                    <div class="relative w-48 h-48 mx-auto flex items-center justify-center">
-                        <div class="absolute inset-0 rounded-full border-[15px] border-blue-600 border-l-slate-100 border-b-slate-100"></div>
-                        <div class="text-center">
-                            <span class="text-3xl font-black block">75%</span>
-                            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-tighter">معدل الإنجاز</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
 
 </body>
 </html>
