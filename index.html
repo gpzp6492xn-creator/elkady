@@ -3,87 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تقييم الطيب</title>
+    <title>تقييم الخدمة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: #050505 url('https://www.transparenttextures.com/patterns/stardust.png'); /* خلفية نجوم بسيطة */
-            font-family: sans-serif;
-            overflow: hidden;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
         }
 
-        .main-container {
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             text-align: center;
-            width: 90%;
             max-width: 400px;
+            width: 100%;
         }
 
-        /* تنسيق الصورة الشخصية مكان اللوجو */
-        .logo {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 50px;
-            border-radius: 50%;
-            border: 3px solid #f1c40f;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.3);
-            object-fit: cover; /* لضمان عدم تشويه الصورة */
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
+        h2 {
+            margin-bottom: 10px;
+            color: #333;
         }
 
-        .buttons-wrap {
+        p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .options {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .btn {
-            padding: 20px;
-            font-size: 22px;
-            font-weight: bold;
+            padding: 15px;
             border: none;
-            border-radius: 15px;
+            border-radius: 10px;
             cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
             text-decoration: none;
-            transition: 0.3s;
-            color: white;
-        }
-
-        /* زر إيجابي - أخضر */
-        .positive {
-            background-color: #27ae60;
-            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
-        }
-
-        /* زر سلبي - أحمر */
-        .negative {
-            background-color: #e74c3c;
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .btn:active {
             transform: scale(0.95);
         }
+
+        .btn-positive {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-positive:hover {
+            background-color: #218838;
+        }
+
+        .btn-negative {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-negative:hover {
+            background-color: #c82333;
+        }
+
+        .icon {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="logo-wrap">
-            <img src="https://r.jina.ai/i/3482d8d85f79435cb7468eb9f315a653" alt="كريم" class="logo">
-        </div>
+    <div class="card">
+        <h2>رأيك يهمنا!</h2>
+        <p>كيف كانت تجربتك معنا اليوم؟</p>
 
-        <div class="buttons-wrap">
-            <a href="https://search.google.com/local/writereview?placeid=ChIJq-FYuPQ5WBQRaAhFrbMTaLI" class="btn positive">إيجابي 👍</a>
+        <div class="options">
+            <!-- زر التقييم الإيجابي -->
+            <button onclick="handleFeedback('positive')" class="btn btn-positive">
+                <span class="icon">😊</span>
+                تجربة ممتازة
+            </button>
 
-            <a href="https://wa.me/201016944198?text=عندي%20شكوي%20:%20" class="btn negative">سلبي 👎</a>
+            <!-- زر التقييم السلبي -->
+            <button onclick="handleFeedback('negative')" class="btn btn-negative">
+                <span class="icon">😞</span>
+                لدي ملاحظات
+            </button>
         </div>
     </div>
+
+    <script>
+        // الإعدادات - ضع روابطك هنا
+        const googleMapsUrl = "https://maps.app.goo.gl/YourLinkHere"; // رابط جوجل مابس الخاص بك
+        const whatsappNumber = "201000000000"; // رقم الواتساب بالصيغة الدولية (بدون +)
+        const message = "مرحباً، لدي شكوى أو ملاحظة بخصوص الخدمة:"; // نص الرسالة التلقائية
+
+        function handleFeedback(type) {
+            if (type === 'positive') {
+                // تحويل لخرائط جوجل مباشرة
+                window.location.href = googleMapsUrl;
+            } else {
+                // تحويل للواتساب للإدارة
+                const fullWhatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+                window.location.href = fullWhatsappUrl;
+            }
+        }
+    </script>
 
 </body>
 </html>
